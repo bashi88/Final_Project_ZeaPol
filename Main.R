@@ -7,6 +7,7 @@ library(RCurl)
 library(RJSONIO)
 
 source("R/GeocodeLocater.R")
+source("R/APIget.R")
 
 wageningengeocode <- gGeoCode("Wageningen, GL") 
 
