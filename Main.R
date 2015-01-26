@@ -16,7 +16,7 @@ CityGeocode <- gGeoCode("Wageningen, GL")
 LatCity <- CityGeocode[1]
 LonCity <- CityGeocode[2]
 
-get.places.API(lat = LatCity,lon = LonCity,radius = 500,searchtypes = "restaurant",filetype = "json",key = "AIzaSyBZX6DgP6oUt6TxY0ogZB3GU_IEqu-RkvI")
+get.places.API(lat = LatCity,lon = LonCity,radius = 500,searchtypes = "restaurant",filetype = "json",key = "yourkey")
 
 JsonToCsvWriter("Data/placesAPIrestaurantMonJan261407422015.json")
 
