@@ -18,17 +18,14 @@ JsonToCsvWriter <- function(file) {
     lonlist[i] <- raw_data$results[[i]]$geometry$location[2]
     namelist[i] <- raw_data$results[[i]]$name
     addresslist[i] <- raw_data$results[[i]]$vicinity
-    
-    subtypelist <- list()
+    typescript <- ""
     for(j in 1:length(raw_data$results[[i]]$types)) {
-      
-      subtypelist[j] <- raw_data$results[[i]]$types[j]
+      typescript <- paste(typescript,raw_data$results[[i]]$types[j])
     }
     
-    typelist[i] <- list(subtypelist)
-    
-    
-     }
+    typelist[i] <- typescript
+  
+  }
   
   datalist <- list(lat = latlist, lon = lonlist, name = namelist, type = typelist, address = addresslist)
 
