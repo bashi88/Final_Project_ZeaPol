@@ -20,8 +20,8 @@ get.places.API(lat = LatCity,lon = LonCity,radius = 500,searchtypes = "restauran
 
 JsonToCsvWriter("Data/placesAPIrestaurantMonJan261407422015.json")
 
-testcsv = read.csv("Data/placesAPIrestaurantMonJan261407422015 .csv", header = TRUE)
+APIcsv = read.csv("Data/placesAPIrestaurantMonJan261407422015 .csv", header = TRUE)
 
-testcsv
+APIcsv
 
 
