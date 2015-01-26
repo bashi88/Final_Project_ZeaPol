@@ -35,7 +35,7 @@ get.places.API <- function(lat, lon, radius, searchtypes =NULL, searchnames = NU
   
   setInternet2(use =T)
   
-  download.file(url,deposit)
+  download.file(url,deposit, overwrite = T)
 }
   
   
