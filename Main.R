@@ -26,5 +26,6 @@ write.csv(APIDataFrame, "Data/APIDataFrame.csv")
 
 testcsv= read.csv("Data/APIDataFrame.csv", header = TRUE)
 
+testcsv
 
 
