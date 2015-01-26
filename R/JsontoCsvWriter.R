@@ -31,11 +31,15 @@ JsonToCsvWriter <- function(file) {
   
   datalist <- list(lat = latlist, lon = lonlist, name = namelist, type = typelist, address = addresslist)
 
-  #return(datalist)
   
-  new_dataframe <- do.call(rbind, datalist)
+  API_DataFrame <- do.call(rbind, datalist)
   
-  return(new_dataframe)
+  print(API_DataFrame)
+  
+  filename <- strsplit(file,".json")
+  filename <- paste(filename,".csv")
+  
+  write.csv(API_DataFrame, filename)
   
 }
 

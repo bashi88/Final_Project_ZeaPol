@@ -18,13 +18,9 @@ LonCity <- CityGeocode[2]
 
 get.places.API(lat = LatCity,lon = LonCity,radius = 500,searchtypes = "restaurant",filetype = "json",key = "AIzaSyBZX6DgP6oUt6TxY0ogZB3GU_IEqu-RkvI")
 
-APIDataFrame <- JsonToCsvWriter("Data/placesAPIrestaurantMonJan261407422015.json")
+JsonToCsvWriter("Data/placesAPIrestaurantMonJan261407422015.json")
 
-APIDataFrame
-
-write.csv(APIDataFrame, "Data/APIDataFrame.csv")
-
-testcsv= read.csv("Data/APIDataFrame.csv", header = TRUE)
+testcsv = read.csv("Data/placesAPIrestaurantMonJan261407422015 .csv", header = TRUE)
 
 testcsv
 

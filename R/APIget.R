@@ -29,7 +29,7 @@ get.places.API <- function(lat, lon, radius, searchtypes =NULL, searchnames = NU
   d <- gsub(" ", "", d, fixed = TRUE)
   d <- gsub(":", "", d, fixed = TRUE)
   
-  deposit <- paste("Data/placesAPI",searchtypes,searchnames,d,".json")
+  deposit <- paste("Data/placesAPI",,searchnames,d,".json")
   deposit <- gsub(" ", "", deposit, fixed = TRUE)
   print(deposit)
   
