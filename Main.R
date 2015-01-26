@@ -6,11 +6,15 @@
 library(RCurl)
 library(RJSONIO)
 
+
 source("R/GeocodeLocater.R")
 source("R/APIget.R")
 
-wageningengeocode <- gGeoCode("Wageningen, GL") 
+CityGeocode <- gGeoCode("Wageningen, GL") 
 
-latwageningen <- wageningengeocode[1]
-lonwageningen <- wageningengeocode[2]
+LatCity <- CityGeocode[1]
+LonCity <- CityGeocode[2]
+
+get.places.API(lat = LatCity,lon = LonCity,radius = 500,searchtypes = "restaurant",filetype = "json",key = "AIzaSyBZX6DgP6oUt6TxY0ogZB3GU_IEqu-RkvI")
+
 

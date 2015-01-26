@@ -4,18 +4,38 @@
 # Final_Project
 
 get.places.API <- function(lat, lon, radius, searchtypes =NULL, searchnames = NULL, filetype, key) {
-  if(is.null(searchtypes)) {
-    searchtypes <- ""
-  }
-  if(is.null(searchnames)) {
-    searchnames <- ""
-  }
+  u = URLencode
+  
   rootscript <- "https://maps.googleapis.com/maps/api/place/nearbysearch/"
-  geocodeandfilescript <- paste(filetype,"?location=",lat,",",lon,"$radius=",radius)
-  typesearchscript <- paste("&types=",searchtypes)
-  namesearchscript <- paste("&names=",searchnames)
-  keyscript <- paste("&key=",key)
-  url <- paste(rootscript,geocodeandfilescript,typesearchscript,namesearchscript,keyscript)
+  
+  geocodeandfilescript <- u(paste(filetype,"?location=",lat,",",lon,"&radius=",radius,sep =""))
+  
+  typesearchscript <- ""
+  if(!is.null(searchtypes)) {
+    typesearchscript <- u(paste("&types=",searchtypes,sep =""))
+  }
+  
+  namesearchscript <- ""
+  if(!is.null(searchnames)) {
+    namesearchscript <- u(paste("&names=",searchnames,sep =""))
+  }
+  
+  keyscript <- u(paste("&key=",key,sep =""))
+  
+  url <- u(paste(rootscript,geocodeandfilescript,typesearchscript,namesearchscript,keyscript,sep =""))
+  print(url)
+  
+  d <- date()
+  d <- gsub(" ", "", d, fixed = TRUE)
+  d <- gsub(":", "", d, fixed = TRUE)
+  
+  deposit <- paste("Data/placesAPI",searchtypes,searchnames,d)
+  deposit <- gsub(" ", "", deposit, fixed = TRUE)
+  print(deposit)
+  
+  setInternet2(use =T)
+  
+  download.file(url,deposit)
 }
   
   
