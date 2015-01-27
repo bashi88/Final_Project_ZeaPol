@@ -29,7 +29,7 @@ get.places.API <- function(lat, lon, radius, searchtypes = NULL, searchnames = N
     tokenscript <- "" }
   
   url <- u(paste(rootscript,geocodeandfilescript,typesearchscript,namesearchscript,keyscript,token,sep =""))
-  urlcheck <- (paste("url = ", url))
+  print(paste("url = ", url))
   
   d <- date()
   d <- gsub(" ", "", d, fixed = TRUE)

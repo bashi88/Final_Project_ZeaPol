@@ -3,7 +3,9 @@
 # Date: 26/01/2015
 # Final_Project
 
-setwd("D:\GeoScripting_ZeaPol\Final_Project_ZeaPol")
+getwd()
+
+#setwd()  # if neccescary
 
 library(RCurl)
 library(RJSONIO)
@@ -13,14 +15,14 @@ source("R/GeocodeLocater.R")
 source("R/APIget.R")
 source("R/APIgetLoop.R")
 source("R/JsontoCsvWriter.R")
-
+source("R/timestop.R")
 
 CityGeocode <- gGeoCode("Wageningen, GL") 
 
 LatCity <- CityGeocode[1]
 LonCity <- CityGeocode[2]
 
-get.places.API.Loop(lat = LatCity,lon = LonCity,radius = 500,searchtypes = "restaurant",filetype = "json",key = "AIzaSyCefGS1U8DtTDbBCnIIHBiEdDDiFcinrAA")
+get.places.API.Loop(lat = LatCity,lon = LonCity,radius = 500,searchtypes = "restaurant",filetype = "json",key = "AIzaSyCzsEoc01dRDkAmqqpmFFUQb-RBoBLA55c")
 
 JsonToCsvWriter("Data/placesAPIrestaurantMonJan261407422015.json")
 

@@ -1,0 +1,34 @@
+{
+   "html_attributions" : [],
+   "results" : [
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 51.965229,
+               "lng" : 5.662386
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "22b14c85425e0ddf0e1a1bb2bd9ae6949e5de18f",
+         "name" : "Bagels & Beans",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 553,
+               "html_attributions" : [],
+               "photo_reference" : "CpQBkAAAABuajq782GRQZ7vm4G6d7z8NQq_M8Izr-rKTn_ftTMh1amNKIqwGQLjutZtUYbgpwV1-jiOrRTCMTgc8uuKwn-N5iDUrNxOgPlwApxhG3isiICGXvLRecMYw1PYDai0LGIAGLNGBk8Zfa6FNKxrApRV1wc_T_DVxSjShPKEsVA7F9G6E4pRWH5iZdHU1AGgqshIQMyRvKwJtTnyWd_jnJicElhoUROxV0saRfp6na64vQUR8ocY2gZw",
+               "width" : 553
+            }
+         ],
+         "place_id" : "ChIJA9mxqV6rx0cRh2xzJ9NL6dU",
+         "reference" : "CnRwAAAAmtBl253dTQ1VeFWHNGjOl1rVb3SrlQfbsewHtm2id1BLAGZHIiCvgCR3DSPh2xCtF26XRR_MmhXLJ3jPSm7s9yXpR6CSgiJBYTPaT38FXBQL9aOGndhsro0iLZxzGNmAZ3oaH81AXKV9dBwOY9kp3RIQikj8lqpd3zu-aUeRrHtuLBoU6QwEhy9fsAi18Xub6TUVD2ScqSc",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "establishment" ],
+         "vicinity" : "Hoogstraat 10, Wageningen"
+      }
+   ],
+   "status" : "OK"
+}
