@@ -1,15 +1,18 @@
 # Team: ZeaPol
 # Team Members: Roeland de Koning / Barbara Sienkiewicz
-# Date: 26/01/2015
+# Date: 29/01/2015
 # Final_Project
+##########################################################
+# Function to obtain longitude and latitude of the center of the city
 
 
 construct.geocode.url <- function(address, return.call = "json", sensor = "false") {
   root <- "http://maps.google.com/maps/api/geocode/"
-  uscript <- paste(root, return.call, "?address=", address, "&sensor=", sensor, sep = "")
-  return(URLencode(uscript))
+  URLscript <- paste(root, return.call, "?address=", address, "&sensor=", sensor, sep = "")
+  return(URLencode(URLscript))
 }
 
+# Getting longitude and latitude of the centre of the selected city
 gGeoCode <- function(address,verbose=FALSE) {
   if(verbose) cat(address,"\n")
   u <- construct.geocode.url(address)

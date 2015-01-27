@@ -1,10 +1,14 @@
 # Team: ZeaPol
 # Team Members: Roeland de Koning / Barbara Sienkiewicz
-# Date: 26/01/2015
+# Date: 29/01/2015
 # Final_Project
+##########################################################
+# Function to create URLs for a search
 
+
+# Functions used
 source("R/APIget.R")
-source("R/timestop.R")
+source("R/Sleep.R")
 
 get.places.API.Loop <- function(lat, lon, radius, searchtypes = NULL, searchnames = NULL, filetype, key, token = NULL) {
   t <- "1"
@@ -32,6 +36,7 @@ get.places.API.Loop <- function(lat, lon, radius, searchtypes = NULL, searchname
     token <- APIFile$next_page_token
     print(paste("token check = ",token))
     
+    # Set a sleep mode for 5 sec (otherwise next_page_token is not working)
     print("5 second wait please")
     OneMomentPlease(5)
   

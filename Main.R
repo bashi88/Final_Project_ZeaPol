@@ -1,12 +1,16 @@
 # Team: ZeaPol
 # Team Members: Roeland de Koning / Barbara Sienkiewicz
-# Date: 26/01/2015
+# Date: 29/01/2015
 # Final_Project
+##########################################################
 
+# Check working directory
 getwd()
 
-#setwd()  # if neccescary
+# If necessary, change directory by:
+#setwd()
 
+# Load libraries
 library(RCurl)
 library(RJSONIO)
 library(plyr)
@@ -16,26 +20,31 @@ library(maps)
 library(sp)
 library(rgdal)
 
-
+# Functions used
 source("R/GeocodeLocater.R")
 source("R/APIget.R")
 source("R/APIgetLoop.R")
-source("R/timestop.R")
+source("R/Sleep.R")
 source("R/JsontoCsvWriter.R")
 
-
+# Get longitude and latitute of the centre of the city
 CityGeocode <- gGeoCode("Wageningen, GL") 
 
 LatCity <- CityGeocode[1]
 LonCity <- CityGeocode[2]
 
-get.places.API.Loop(lat = LatCity,lon = LonCity,radius = 500,searchtypes = "restaurant",filetype = "json",key = "yourkey")
+# Get JSON files with results of the search and save them in the created folder
+get.places.API.Loop(lat = LatCity, lon = LonCity, radius = 500, searchtypes = "restaurant", 
+                    filetype = "json", key = "AIzaSyCzsEoc01dRDkAmqqpmFFUQb-RBoBLA55c")
 
-JsonToCsvWriter("Data/placesAPITueJan")
+# Write results into .csv in folder specified as argument
+JsonToCsvWriter("Data/placesAPITueJan") 
 
-
+# Read created .csv
 APIcsv = (read.csv("Data/placesAPITueJan//placesAPITueJan.csv", header = TRUE))
 APIcsv
+
+# Check column names
 names(APIcsv)
 
 

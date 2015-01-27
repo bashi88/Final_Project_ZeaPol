@@ -1,9 +1,12 @@
 # Team: ZeaPol
 # Team Members: Roeland de Koning / Barbara Sienkiewicz
-# Date: 26/01/2015
+# Date: 29/01/2015
 # Final_Project
+##########################################################
+# Function to create a base url search (used in function GetAPILoop.R)
 
-get.places.API <- function(lat, lon, radius, searchtypes = NULL, searchnames = NULL, filetype, key, token = NULL,t =NULL) {
+
+get.places.API <- function(lat, lon, radius, searchtypes = NULL, searchnames = NULL, filetype, key, token = NULL, t =NULL) {
   u = URLencode
   
   rootscript <- "https://maps.googleapis.com/maps/api/place/nearbysearch/"
@@ -53,7 +56,6 @@ get.places.API <- function(lat, lon, radius, searchtypes = NULL, searchnames = N
 }
   
   
-  
+# Examples of the search url:  
 #https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
-
 #https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=cruise&key=AddYourOwnKeyHere
