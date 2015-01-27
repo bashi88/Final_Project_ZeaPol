@@ -29,22 +29,27 @@ get.places.API <- function(lat, lon, radius, searchtypes = NULL, searchnames = N
     tokenscript <- "" }
   
   url <- u(paste(rootscript,geocodeandfilescript,typesearchscript,namesearchscript,keyscript,token,sep =""))
-  print(url)
+  urlcheck <- (paste("url = ", url))
   
   d <- date()
   d <- gsub(" ", "", d, fixed = TRUE)
   d <- gsub(":", "", d, fixed = TRUE)
+  print(paste("date = ",d))
   
-  deposit <- paste("Data/placesAPI",t,searchtypes,searchnames,d,".json")
+  subdirectory <- substr(d,1,6)
+  loc <- paste("Data/placesAPI",subdirectory)
+  loc <- gsub(" ", "", loc, fixed = TRUE)
+  dir.create(path = loc,showWarnings = FALSE)
+  deposit <- paste(loc, "/",t,searchtypes,searchnames,d,".json")
   deposit <- gsub(" ", "", deposit, fixed = TRUE)
-  print(deposit)
+  print(paste("exdir = ",deposit))
   
   setInternet2(use =T)
   
   download.file(url,deposit)
-  RawAPI <- fromJSON(deposit)
+  JsonAPI <- fromJSON(deposit)
   
-  return(RawAPI)
+  return(JsonAPI)
 }
   
   
