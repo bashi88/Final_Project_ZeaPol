@@ -23,7 +23,7 @@ get.places.API <- function(lat, lon, radius, searchtypes = NULL, searchnames = N
   keyscript <- u(paste("&key=",key,sep =""))
   
   if(!is.null(token)) {
-    tokenscript <- u(token)
+    tokenscript <- (token)
     }
   else {
     tokenscript <- "" }
