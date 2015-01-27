@@ -54,6 +54,20 @@
     filex <- substring(filelocation,6)
     filename <- paste(filelocation,"/",filex,".csv")
     filename <- gsub(" ", "", filename, fixed = TRUE)
-    write.csv(Final_DataFrame, filename) 
-
+    write.csv(Final_DataFrame, filename, row.names = FALSE)
+    
+    APIcsv = t(read.csv(filename, header = TRUE))
+    write.csv(APIcsv, filename, row.names = FALSE)
+    APIcsv = read.csv(filename, header = TRUE)
+    
+    columnnames <- row.names(API_DataFrame)
+    print(columnnames)
+    
+    for (l in 1:length(columnnames)) {
+      names(APIcsv)[l] <- columnnames[l]
+    }
+    
+    print(names(APIcsv))
+    write.csv(APIcsv, filename, row.names = FALSE) 
+    
   }

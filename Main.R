@@ -10,6 +10,11 @@ getwd()
 library(RCurl)
 library(RJSONIO)
 library(plyr)
+library(ggplot2)
+library(ggmap)
+library(maps)
+library(sp)
+library(rgdal)
 
 
 source("R/GeocodeLocater.R")
@@ -29,15 +34,40 @@ get.places.API.Loop(lat = LatCity,lon = LonCity,radius = 500,searchtypes = "rest
 JsonToCsvWriter("Data/placesAPITueJan")
 
 
-#Combine data pages
-filings <- rbind.fill(test1$results, test2$results, test3$results)
-
-#Check output
-colnames(results)
-nrow(results)
-
-APIcsv = read.csv("Data/placesAPIrestaurantMonJan261407422015 .csv", header = TRUE)
-
+APIcsv = (read.csv("Data/placesAPITueJan//placesAPITueJan.csv", header = TRUE))
 APIcsv
+names(APIcsv)
 
 
+x <- geom_point(data=APIcsv, aes(x=lat,y=lon, group=NULL),
+             colour="red", alpha=0.2, size=1)
+x
+
+
+
+######################################################
+######################################################
+
+library(rgdal)
+EPSG <- make_EPSG()
+NY   <- with(EPSG,EPSG[grepl("New York",note) & code==2263,]$prj4)
+NY
+# [1] "+proj=lcc +lat_1=41.03333333333333 +lat_2=40.66666666666666 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000.0000000001 +y_0=0 +datum=NAD83 +units=us-ft +no_defs"
+
+Now we can either take your map and reproject that into WGS84, or take your data and reproject that into the map CRS.
+
+setwd("< directory with all your files >")
+data   <- read.csv("nycrats_missing_latlong_removed_4.2.14.csv")
+
+# First approach: reproject map into long-lat
+wgs.84       <- "+proj=longlat +datum=WGS84"
+map          <- readOGR(dsn=".",layer="nybb",p4s=NY)
+map.wgs84    <- spTransform(map,CRS(wgs.84))
+map.wgs84.df <- fortify(map.wgs84)
+library(ggplot2)
+ggplot(map.wgs84.df, aes(x=long,y=lat,group=group))+
+  geom_path()+
+  geom_point(data=data, aes(x=longitude,y=latitude, group=NULL),
+             colour="red", alpha=0.2, size=1)+
+  ggtitle("Projection: WGS84 longlat")+
+  coord_fixed()
