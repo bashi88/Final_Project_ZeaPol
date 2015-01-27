@@ -3,6 +3,8 @@
 # Date: 26/01/2015
 # Final_Project
 
+setwd("D:\GeoScripting_ZeaPol\Final_Project_ZeaPol")
+
 library(RCurl)
 library(RJSONIO)
 
