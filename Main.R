@@ -9,13 +9,15 @@ getwd()
 
 library(RCurl)
 library(RJSONIO)
+library(plyr)
 
 
 source("R/GeocodeLocater.R")
 source("R/APIget.R")
 source("R/APIgetLoop.R")
-source("R/JsontoCsvWriter.R")
 source("R/timestop.R")
+source("R/JsontoCsvWriter.R")
+
 
 CityGeocode <- gGeoCode("Wageningen, GL") 
 
@@ -24,10 +26,15 @@ LonCity <- CityGeocode[2]
 
 get.places.API.Loop(lat = LatCity,lon = LonCity,radius = 500,searchtypes = "restaurant",filetype = "json",key = "AIzaSyCzsEoc01dRDkAmqqpmFFUQb-RBoBLA55c")
 
-JsonToCsvWriter("Data/placesAPIrestaurantMonJan261407422015.json")
+JsonToCsvWriter("Data/placesAPITueJan")
 
-raw_data <- fromJSON("Data/placesAPIrestaurantTueJan271016372015.json")
 
+#Combine data pages
+filings <- rbind.fill(test1$results, test2$results, test3$results)
+
+#Check output
+colnames(results)
+nrow(results)
 
 APIcsv = read.csv("Data/placesAPIrestaurantMonJan261407422015 .csv", header = TRUE)
 
