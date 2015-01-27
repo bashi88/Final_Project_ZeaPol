@@ -3,7 +3,7 @@
 # Date: 26/01/2015
 # Final_Project
 
-get.places.API <- function(lat, lon, radius, searchtypes =NULL, searchnames = NULL, filetype, key) {
+get.places.API <- function(lat, lon, radius, searchtypes = NULL, searchnames = NULL, filetype, key, token = NULL,t =NULL) {
   u = URLencode
   
   rootscript <- "https://maps.googleapis.com/maps/api/place/nearbysearch/"
@@ -22,20 +22,29 @@ get.places.API <- function(lat, lon, radius, searchtypes =NULL, searchnames = NU
   
   keyscript <- u(paste("&key=",key,sep =""))
   
-  url <- u(paste(rootscript,geocodeandfilescript,typesearchscript,namesearchscript,keyscript,sep =""))
+  if(!is.null(token)) {
+    tokenscript <- u(token)
+    }
+  else {
+    tokenscript <- "" }
+  
+  url <- u(paste(rootscript,geocodeandfilescript,typesearchscript,namesearchscript,keyscript,token,sep =""))
   print(url)
   
   d <- date()
   d <- gsub(" ", "", d, fixed = TRUE)
   d <- gsub(":", "", d, fixed = TRUE)
   
-  deposit <- paste("Data/placesAPI",,searchnames,d,".json")
+  deposit <- paste("Data/placesAPI",t,searchtypes,searchnames,d,".json")
   deposit <- gsub(" ", "", deposit, fixed = TRUE)
   print(deposit)
   
   setInternet2(use =T)
   
-  download.file(url,deposit, overwrite = T)
+  download.file(url,deposit)
+  RawAPI <- fromJSON(deposit)
+  
+  return(RawAPI)
 }
   
   
