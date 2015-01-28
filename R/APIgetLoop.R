@@ -37,8 +37,8 @@ get.places.API.Loop <- function(lat, lon, radius, searchtypes = NULL, searchname
     print(paste("token check = ",token))
     
     # Set a sleep mode for 5 sec (otherwise next_page_token is not working)
-    print("5 second wait please")
-    OneMomentPlease(5)
+    print("3 second wait please")
+    OneMomentPlease(3)
   
     } 
 }

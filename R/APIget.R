@@ -39,7 +39,7 @@ get.places.API <- function(lat, lon, radius, searchtypes = NULL, searchnames = N
   d <- gsub(":", "", d, fixed = TRUE)
   print(paste("date = ",d))
   
-  subdirectory <- substr(d,1,6)
+  subdirectory <- substr(d,1,8)
   loc <- paste("Data/placesAPI",subdirectory)
   loc <- gsub(" ", "", loc, fixed = TRUE)
   dir.create(path = loc,showWarnings = FALSE)

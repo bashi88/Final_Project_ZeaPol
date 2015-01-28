@@ -36,27 +36,25 @@ source("R/BasicMapMaker.R")
 ######################################################################################################
 
 ## Specify the city in folowing format: city, municipatily abreviation (e.g."Ede, GL")
-city <- "Ede, GL"
+city <- "Arnhem, GL"
 
-## Specify searctype (choose one from: cafe, conviniece_store, food, grocery_or_supermarket, 
+## Specify searctype (choose one from: cafe, conveiniece_store, food, grocery_or_supermarket, 
 ## liquor_store, meal_delivery, meal_takeaway, restaurant, store)
-searchtype <- "restaurant"
+searchtype <- "store"
 
 ## Specify the radius (in meters)
-rad <- 1000
+rad <- 5000
 
 ## Add your API key
 KEY <- "AIzaSyAcdv2napQhKQoP8pY9nebMkFJTZyeddDs"
 
 ## Specify map title
-MapTitle <- "Ede Restaurants 1km from Centre"
+MapTitle <- "Arnhem store 5km from Centre"
 
 ## Specify zoom level of the map, ranges from 0 (whole world) to 21 (building)
-zoom = 14
+zoom = 12
 
-##Specify csv directory (use namimg convention: "Data/placesAPIWedJan" )
-csvLocation <- "Data/placesAPI28Jan"
-
+csvlocation <- "Data/placesAPIWedJan28"
 ################################################################################################
 ################################################################################################
 
@@ -71,7 +69,7 @@ get.places.API.Loop(lat = LatCity, lon = LonCity, radius = rad, searchtypes = se
                     filetype = "json", key = KEY)
 
 ## Write results into .csv in folder specified as argument
-filename <- JsonToCsvWriter(csvLocation, searchtype, city) 
+filename <- JsonToCsvWriter(filelocation =  csvlocation,categoryidentifier =  searchtype,locationidentifier =  city) 
 
 ## Read created .csv
 API = (read.csv(filename, header = TRUE))
@@ -86,6 +84,8 @@ outputlocation <- basicmapmaker(location = city,csvfile = filename,
 
 image <- readJPEG(outputlocation)
 
-plot(image)
+
+
+
 
 

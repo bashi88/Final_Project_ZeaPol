@@ -27,8 +27,8 @@ PG <- PG + geom_point(color = "red", size = 4)
 
 PG <- PG + labs(title = MapTitle, x = "Longitude", 
                 y = "Latitude")
-
-outputfile <- paste("output/",MapTitle,".jpeg")
+dir.create("Output")
+outputfile <- paste("Output/",MapTitle,".jpeg")
 outputfile <- gsub(" ", "", outputfile, fixed = TRUE)
 print(outputfile)
 
