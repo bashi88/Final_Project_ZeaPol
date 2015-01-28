@@ -73,7 +73,7 @@ filename <- JsonToCsvWriter(filelocation =  csvlocation,categoryidentifier =  se
 
 ## Read created .csv
 API = (read.csv(filename, header = TRUE))
-API
+head(API)
 
 ## Check column names
 names(API)
