@@ -34,14 +34,14 @@ LatCity <- CityGeocode[1]
 LonCity <- CityGeocode[2]
 
 # Get JSON files with results of the search and save them in the created folder
-get.places.API.Loop(lat = LatCity, lon = LonCity, radius = 500, searchtypes = "restaurant", 
-                    filetype = "json", key = "AIzaSyCzsEoc01dRDkAmqqpmFFUQb-RBoBLA55c")
+get.places.API.Loop(lat = LatCity, lon = LonCity, radius = 5000, searchtypes = "grocery_or_supermarket", 
+                    filetype = "json", key = "AIzaSyAcdv2napQhKQoP8pY9nebMkFJTZyeddDs")
 
 # Write results into .csv in folder specified as argument
-JsonToCsvWriter("Data/placesAPITueJan") 
+JsonToCsvWriter("Data/placesAPIWedJan", "supermarket", Wageningen) 
 
 # Read created .csv
-APIcsv = (read.csv("Data/placesAPITueJan//placesAPITueJan.csv", header = TRUE))
+APIcsv = (read.csv("Data/placesAPIWedJan/placesAPIWedJansupermarket.csv", header = TRUE))
 APIcsv
 
 # Check column names

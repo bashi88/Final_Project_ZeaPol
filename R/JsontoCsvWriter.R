@@ -6,7 +6,7 @@
 # Function to write JSON files into one .csv file
 
 
-JsonToCsvWriter <- function(filelocation) {
+JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier) {
   
   # Create a list of all .json files within given filelocation
   file.list <- list.files(filelocation,pattern = "*.json")
@@ -68,7 +68,7 @@ JsonToCsvWriter <- function(filelocation) {
   Final_DataFrame <- do.call(cbind,ListOfDataFrames)
       
   filex <- substring(filelocation,6)
-  filename <- paste(filelocation,"/",filex,".csv")
+  filename <- paste(filelocation,"/",filex, searchcategory,locationidentifier,".csv")
   filename <- gsub(" ", "", filename, fixed = TRUE)
   write.csv(Final_DataFrame, filename, row.names = FALSE)
     
@@ -85,5 +85,11 @@ JsonToCsvWriter <- function(filelocation) {
     
   print(names(APIcsv))
   write.csv(APIcsv, filename, row.names = FALSE) 
-    
+  
+
+  for (m in 1:length(file.list)) {
+    fileremoval <- paste(filelocation,"/",file.list[m])
+    fileremoval <- gsub(" ", "", fileremoval, fixed = TRUE)
+    file.remove(fileremoval)
+  }
 }
