@@ -100,4 +100,5 @@ JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier)
     fileremoval <- gsub(" ", "", fileremoval, fixed = TRUE)
     file.remove(fileremoval)
   }
+  return(filename)
 }

@@ -31,14 +31,14 @@ source("R/JsontoCsvWriter.R")
 source("R/BasicMapMaker.R")
 
 ##########################################################
-# BELOW YOU CAN CHANGE YOUR SEARCH SETTINGS
+# BELOW YOU CAN CHANGE SEARCH SETTINGS #
 ##########################################################
 
-# Specify the city in folowing format: city, municipatily abreviation (e.g. "Ede, GL")
+# Specify the city in folowing format: city, municipatily abreviation (e.g."Ede, GL")
 city <- "Ede, GL"
 
 # Specify searctype (choose one from: cafe, conviniece_store, food, grocery_or_supermarket, 
-# liquor_store, meal_delivery, meal_takeaway, restaurant, store )
+# liquor_store, meal_delivery, meal_takeaway, restaurant, store)
 searchtype <- "food"
 
 # Specify the radius (in meters)
@@ -46,6 +46,9 @@ rad <- 1000
 
 # Add your API key
 KEY <- "AIzaSyAcdv2napQhKQoP8pY9nebMkFJTZyeddDs"
+
+# Specify map title
+MapTitle <- "Ede Food 1km from Centre"
 
 ##########################################################
 # Get longitude and latitute of the centre of the city
@@ -59,15 +62,15 @@ get.places.API.Loop(lat = LatCity, lon = LonCity, radius = rad, searchtypes = se
                     filetype = "json", key = KEY)
 
 # Write results into .csv in folder specified as argument
-JsonToCsvWriter("Data/placesAPIWedJan", searchtype, "Ede") 
+filename <- JsonToCsvWriter("Data/placesAPIWedJan", searchtype, "Ede") 
 
 # Read created .csv
-API = (read.csv("Data/placesAPIWedJan/placesAPIWedJanfoodEde.csv", header = TRUE))
+API = (read.csv(filename, header = TRUE))
 API
 
 # Check column names
 names(API)
 
 # Plot results
-basicmapmaker(location = city,csvfile = "Data/placesAPIWedJan//placesAPIWedJanfoodEde.csv",
-              zoom = 14,maptype = 'toner',title = "Ede Food 1km from Centre") # automate naming!
+basicmapmaker(location = city,csvfile = filename,
+              zoom = 14,maptype = 'toner',title = MapTitle) # automate naming!
