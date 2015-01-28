@@ -36,7 +36,7 @@ source("R/BasicMapMaker.R")
 ######################################################################################################
 
 ## Specify the city in folowing format: city, municipatily abreviation (e.g."Ede, GL")
-city <- "Arnhem, GL"
+city <- "Ede, GL"
 
 ## Specify searctype (choose one from: cafe, conviniece_store, food, grocery_or_supermarket, 
 ## liquor_store, meal_delivery, meal_takeaway, restaurant, store)
@@ -49,7 +49,7 @@ rad <- 1000
 KEY <- "AIzaSyAcdv2napQhKQoP8pY9nebMkFJTZyeddDs"
 
 ## Specify map title
-MapTitle <- "Arnhem Restaurants 1km from Centre"
+MapTitle <- "Ede Restaurants 1km from Centre"
 
 ## Specify zoom level of the map, ranges from 0 (whole world) to 21 (building)
 zoom = 14
