@@ -28,18 +28,17 @@ PG <- PG + geom_point(color = "red", size = 4)
 PG <- PG + labs(title = MapTitle, x = "Longitude", 
                 y = "Latitude")
 
-outputfile <- paste("output/",MapTitle,".png")
+outputfile <- paste("output/",MapTitle,".jpeg")
 outputfile <- gsub(" ", "", outputfile, fixed = TRUE)
 print(outputfile)
 
-png(outputfile)
+jpeg(outputfile)
 
 print(PG)
 
-plot(PG)
-
 dev.off()
 
+return(outputfile)
 ## Create buffer zones of interest range indeterminate
 
 

@@ -21,6 +21,7 @@ library(sp)
 library(rgdal)
 library(RgoogleMaps)
 library(mapproj)
+library(jpeg)
 
 ## Functions used
 source("R/GeocodeLocater.R")
@@ -80,6 +81,11 @@ API
 names(API)
 
 ## Plot results
-a <- basicmapmaker(location = city,csvfile = filename,
-              zoom = zoom ,maptype = 'toner',MapTitle = MapTitle) # automate naming!
+outputlocation <- basicmapmaker(location = city,csvfile = filename,
+    zoom = zoom ,maptype = 'toner',MapTitle = MapTitle) # automate naming!
+
+image <- readJPEG(outputlocation)
+
+plot(image)
+
 
