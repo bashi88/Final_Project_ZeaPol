@@ -12,7 +12,7 @@ construct.geocode.url <- function(address, return.call = "json", sensor = "false
   return(URLencode(URLscript))
 }
 
-# Getting longitude and latitude of the centre of the selected city
+# Get longitude and latitude of the centre of the selected city
 gGeoCode <- function(address,verbose=FALSE) {
   if(verbose) cat(address,"\n")
   u <- construct.geocode.url(address)

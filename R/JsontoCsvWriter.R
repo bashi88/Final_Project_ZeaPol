@@ -15,7 +15,7 @@ JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier)
   # Create empty list
   ListOfDataFrames <- NULL
   
-  # 
+  
   for (k in 1:length(file.list)) {
     print(paste("interation ",k))
     
@@ -49,16 +49,13 @@ JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier)
       for(j in 1:length(raw_data$results[[i]]$types)) {
         typescript <- paste(typescript,raw_data$results[[i]]$types[j])
       }
-        
-      typelist[i] <- typescript
-        
+      typelist[i] <- typescript 
     }
       
     datalist <- list(lat = latlist, lon = lonlist, name = namelist, type = typelist, address = addresslist)
       
-      
-    API_DataFrame <- do.call(rbind, datalist)
-      
+    # Bind all data frames  
+    API_DataFrame <- do.call(rbind, datalist)  
     print("data frame made")
     
     #return(API_DataFrame)
@@ -77,6 +74,7 @@ JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier)
   filename <- paste(filelocation,"/",filex, categoryidentifier,locationidentifier,".csv")
   filename <- gsub(" ", "", filename, fixed = TRUE)
   print(filename)
+  
   #write.table(x = Final_DataFrame,file = filename,sep = ",",eol = "\n",row.names = FALSE)
   write.csv(Final_DataFrame, filename, row.names = FALSE, eol ="\n")
     
