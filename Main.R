@@ -28,20 +28,20 @@ source("R/Sleep.R")
 source("R/JsontoCsvWriter.R")
 
 # Get longitude and latitute of the centre of the city
-CityGeocode <- gGeoCode("Wageningen, GL") 
+CityGeocode <- gGeoCode("Ede, GL") 
 
 LatCity <- CityGeocode[1]
 LonCity <- CityGeocode[2]
 
 # Get JSON files with results of the search and save them in the created folder
-get.places.API.Loop(lat = LatCity, lon = LonCity, radius = 5000, searchtypes = "grocery_or_supermarket", 
+get.places.API.Loop(lat = LatCity, lon = LonCity, radius = 5000, searchtypes = "restaurant", 
                     filetype = "json", key = "AIzaSyAcdv2napQhKQoP8pY9nebMkFJTZyeddDs")
 
 # Write results into .csv in folder specified as argument
-JsonToCsvWriter("Data/placesAPIWedJan", "supermarket", Wageningen) 
+JsonToCsvWriter("Data/placesAPIWedJan", "restaurant", "Ede") 
 
 # Read created .csv
-APIcsv = (read.csv("Data/placesAPIWedJan/placesAPIWedJansupermarket.csv", header = TRUE))
+APIcsv = (read.csv("Data/placesAPIWedJan/placesAPIWedJanrestaurantEde.csv", header = TRUE))
 APIcsv
 
 # Check column names
