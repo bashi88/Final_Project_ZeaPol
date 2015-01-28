@@ -21,16 +21,16 @@ PG <- ggmap(pg, extent = 'panel',
             base_layer = ggplot(API, aes(x=lon, y=lat))
 )
 
-PG <- PG + geom_point(color = "red", size = 4)
+PG <- PG + geom_point(color = "red", size = 3)
 print("Vector Points Placed")
 PG <- PG + labs(title = MapTitle, x = "Longitude", 
-                y = "Latitude")
+                y = "Latitude")          
 dir.create("Output")
-outputfile <- paste("Output/",MapTitle,".jpeg")
+outputfile <- paste("Output/",MapTitle,".pdf")
 outputfile <- gsub(" ", "", outputfile, fixed = TRUE)
-print(paste("exdir = ", outputfile)
+print(paste("exdir = ", outputfile))
 
-jpeg(outputfile)
+pdf(outputfile)
 
 print(PG)
 

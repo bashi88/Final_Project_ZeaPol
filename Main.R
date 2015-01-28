@@ -36,11 +36,11 @@ source("R/BasicMapMaker.R")
 ######################################################################################################
 
 ## Specify the city in folowing format: city, municipatily abreviation (e.g."Ede, GL")
-city <- "Renkum, GL"
+city <- "Ede, GL"
 
 ## Specify searctype (choose one from: cafe, conveiniece_store, food, grocery_or_supermarket, 
 ## liquor_store, meal_delivery, meal_takeaway, restaurant, store)
-searchtype <- "restaurant"
+searchtype <- "grocery_or_supermarket"
 
 ## Specify the radius (in meters)
 rad <- 1000
@@ -49,7 +49,7 @@ rad <- 1000
 KEY <- "AIzaSyAcdv2napQhKQoP8pY9nebMkFJTZyeddDs"
 
 ## Specify map title
-MapTitle <- "Renkum store 1km from Centre"
+MapTitle <- "Ede grocery and supermarket 1km from Centre"
 
 ## Specify zoom level of the map, ranges from 0 (whole world) to 21 (building)
 zoom = 14
@@ -80,8 +80,7 @@ names(API)
 
 ## Plot results
 outputlocation <- basicmapmaker(location = city,csvfile = filename,
-    zoom = zoom ,maptype = 'toner',MapTitle = MapTitle) # automate naming!
-
+    zoom = zoom ,maptype = 'toner',MapTitle = MapTitle)
 image <- readJPEG(outputlocation)
 
 
