@@ -2,7 +2,12 @@
 ## Team Members: Roeland de Koning / Barbara Sienkiewicz
 ## Date: 29/01/2015
 ## Final_Project
-##########################################################
+## Adjusted Script (Original Source Below)
+##http://stackoverflow.com/questions/3257441/geocoding-in-r-with-google-maps
+
+################################################################################################
+################################################################################################
+
 ## Function to obtain longitude and latitude of the center of the city
 
 
@@ -13,6 +18,7 @@ construct.geocode.url <- function(address, return.call = "json", sensor = "false
 }
 
 ## Get longitude and latitude of the centre of the selected city
+
 gGeoCode <- function(address,verbose=FALSE) {
   if(verbose) cat(address,"\n")
   u <- construct.geocode.url(address)

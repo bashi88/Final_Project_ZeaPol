@@ -2,7 +2,10 @@
 ## Team Members: Roeland de Koning / Barbara Sienkiewicz
 ## Date: 29/01/2015
 ## Final_Project
-##########################################################
+## Original Script (utilises Google API retrieval code)
+################################################################################################
+################################################################################################
+
 ## Function to create URLs for a search
 
 
@@ -17,6 +20,7 @@ get.places.API.Loop <- function(lat, lon, radius, searchtypes = NULL, searchname
   while (!is.null(token)) {
     
     ## Prepare a token url part (if exists)
+    
     if(token != "") { 
       tokenscript <- "&pagetoken="
       tokenkeyscript <- paste(tokenscript, token)
@@ -27,6 +31,7 @@ get.places.API.Loop <- function(lat, lon, radius, searchtypes = NULL, searchname
     t <- as.character(t)
     
     ## Downlowad JSON file (last file doesn't contain token so after downloading it loop stops)
+    
     APIFile <- get.places.API(lat = lat, lon =  lon, radius =  radius, searchtypes =  searchtypes,
                               searchnames =  searchnames, filetype =  filetype, key =  key, token = token, t = t, subdirectory = subdirectory)
     
@@ -37,10 +42,12 @@ get.places.API.Loop <- function(lat, lon, radius, searchtypes = NULL, searchname
     print("A file Complete")
     
     # Get next_page_token
+    
     token <- APIFile$next_page_token
     print(paste("token check = ",token))
     
     ## Set a sleep mode for 3 sec (otherwise next_page_token is not working)
+    
     print("3 second wait please")
     OneMomentPlease(3)
   

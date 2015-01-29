@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Folder><name>Auckland_restaurants_3km_from_Centre</name>
+  <Placemark>
+	<name>Hoogvliet</name>
+      <Point><coordinates>5.657786,51.965477</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Albert Heijn</name>
+      <Point><coordinates>5.668337,51.969868</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Lidl</name>
+      <Point><coordinates>5.666023,51.968909</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>C1000 Vaartjes</name>
+      <Point><coordinates>5.662934,51.978584</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Aldi Markt</name>
+      <Point><coordinates>5.673174,51.97379</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Spar Wageningen B.V.</name>
+      <Point><coordinates>5.647724,51.98302</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Gebroeders N.M. &amp; C. Mostert Holding B.V.</name>
+      <Point><coordinates>5.676395,51.974653</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Centramarkt Tarthorst</name>
+      <Point><coordinates>5.663292,51.978721</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Toko Indrani</name>
+      <Point><coordinates>5.664162,51.965695</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>J.S. Cuisine De Keuken</name>
+      <Point><coordinates>5.661382,51.964741</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Kruidvat</name>
+      <Point><coordinates>5.663552,51.966491</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Groentehal De Goudreinet B.V.</name>
+      <Point><coordinates>5.662982,51.978836</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Foladi Groenten &amp; Fruit</name>
+      <Point><coordinates>5.668085,51.969745</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Paul en Maartje</name>
+      <Point><coordinates>5.665554,51.967989</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Europacking B.V.</name>
+      <Point><coordinates>5.658865,51.963493</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Möller-Chou V.O.F.</name>
+      <Point><coordinates>5.664048,51.965722</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Groente- en Fruithandel G.W. Timmer</name>
+      <Point><coordinates>5.694323,51.95431</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>AH Stadsbrink</name>
+      <Point><coordinates>5.668396,51.969924</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

@@ -2,17 +2,21 @@
 ## Team Members: Roeland de Koning / Barbara Sienkiewicz
 ## Date: 29/01/2015
 ## Final_Project
-##########################################################
-## Function to write JSON files into one .csv file
+## Original Script
+################################################################################################
+################################################################################################
 
+## Function to write JSON files into one .csv file
 
 JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier) {
   
   ## Create a list of all .json files within given filelocation
+  
   file.list <- list.files(filelocation,pattern = "*.json")
   print(file.list)
   
   ## Create empty list
+  
   ListOfDataFrames <- NULL
   
   
@@ -20,17 +24,21 @@ JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier)
     print(paste("interation ",k))
     
     ## Directory of the k file in the list
+    
     file <- paste(filelocation,"/",file.list[k])
     
     ## Remove empty spaces
+    
     file <- gsub(" ", "", file, fixed = TRUE)
     
     print(paste("filename = ",file))
     
     ## Read content in JSON format and de-serialize it into R objects
+    
     raw_data <- fromJSON(file)
     
     ## Create an empty lists for lon, lat, names, types and addresses
+    
     latlist <- list()
     lonlist <- list()
     namelist <- list()
@@ -55,10 +63,11 @@ JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier)
     datalist <- list(lat = latlist, lon = lonlist, name = namelist, type = typelist, address = addresslist)
       
     ## Bind all data frames  
+    
     API_DataFrame <- do.call(rbind, datalist)  
     print("data frame made")
     
-    ## Return(API_DataFrame)
+    # Return(API_DataFrame)
   
     ListOfDataFrames[[k]] <- API_DataFrame
     
@@ -75,9 +84,13 @@ JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier)
   filename <- gsub(" ", "", filename, fixed = TRUE)
   print(filename)
   
+  
+  ## Create .csv file
+  
   write.csv(Final_DataFrame, filename, row.names = FALSE, eol ="\n")
     
   APIcsv = t(read.csv(filename, header = TRUE))
+  print("transposed .csv file")
   write.csv(APIcsv, filename, row.names = FALSE)
   APIcsv = read.csv(filename, header = TRUE)
     
@@ -87,15 +100,21 @@ JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier)
   for (l in 1:length(columnnames)) {
     names(APIcsv)[l] <- columnnames[l]
   }
-    
+  
+  print("adjust columnnames")
   print(names(APIcsv))
   write.csv(APIcsv, filename, row.names = FALSE) 
   
+  print("write final version of .csv file")
+  
+  ## delete used .json files
 
   for (m in 1:length(file.list)) {
     fileremoval <- paste(filelocation,"/",file.list[m])
     fileremoval <- gsub(" ", "", fileremoval, fixed = TRUE)
     file.remove(fileremoval)
   }
+  
+  print("used .json files removed")
   return(filename)
 }

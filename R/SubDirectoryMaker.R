@@ -2,10 +2,11 @@
 ## Team Members: Roeland de Koning / Barbara Sienkiewicz
 ## Date: 29/01/2015
 ## Final_Project
+## Original Script (utilises date function)
+################################################################################################
+################################################################################################
 
-
-## Sub Directory Folder Maker -----------------------------------------
-
+## Sub Directory Folder Maker
 
 subdirectory.create <- function() {
   d <- date()

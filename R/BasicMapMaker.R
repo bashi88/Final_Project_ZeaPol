@@ -2,15 +2,21 @@
 ## Team Members: Roeland de Koning / Barbara Sienkiewicz
 ## Date: 29/01/2015
 ## Final_Project
-##########################################################
+## Very Adjusted Script (Original Source Below)
+## http://rstudio-pubs-static.s3.amazonaws.com/3295_a0d6b483893f4d09b8111fd05ccff131.html
+################################################################################################
+################################################################################################
+
 ## Function to create a .pdf plot of the results
 
 basicmapmaker <- function(location, csvfile, zoom, maptype, MapTitle) {
 
   ## Read .csv file
+  
   API = read.csv(csvfile, header = TRUE)
 
   ## Create a basemap using stamen maps
+  
   pg <- get_map(location = location,  
                 zoom = zoom,    
                 source = 'stamen', # or 'google' or 'osm'      
@@ -21,19 +27,28 @@ basicmapmaker <- function(location, csvfile, zoom, maptype, MapTitle) {
 
 
   ## Convert a map into gg object
+  
   PG <- ggmap(pg, extent = 'panel', base_layer = ggplot(API, aes(x=lon, y=lat)))
+  
   ## Add points
+  
   PG <- PG + geom_point(color = "red", size = 3)
   print("Vector Points Placed")
+  
   ## Add title and labels
+  
   PG <- PG + labs(title = MapTitle, x = "Longitude", 
                 y = "Latitude")          
   dir.create("Output")
+  
   ## Name a file
+  
   outputfile <- paste("Output/",MapTitle,".pdf")
   outputfile <- gsub(" ", "", outputfile, fixed = TRUE)
   print(paste("exdir = ", outputfile))
+  
   ## Save as .pdf
+  
   pdf(outputfile)
   print(PG)
   dev.off()
