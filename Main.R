@@ -56,7 +56,7 @@ rad <- 3000
 
 ## Add your API key
 
-KEY <- "AIzaSyAcdv2napQhKQoP8pY9nebMkFJTZyeddDs"
+KEY <- "yourkey"
 
 ## Specify map title
 
