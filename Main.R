@@ -35,7 +35,7 @@ source("R/SubDirectoryMaker.R")
 ######################################################################################################
 
 ## Specify the city in folowing format: city, municipatily abreviation (e.g."Ede, GL")
-city <- "Auckland, NZ"
+city <- " Auckland, NZ"
 
 ## Specify searchtype (choose one from: cafe, conveiniece_store, food, grocery_or_supermarket, 
 ## liquor_store, meal_delivery, meal_takeaway, restaurant, store, ect)
@@ -49,7 +49,7 @@ rad <- 3000
 KEY <- "AIzaSyAcdv2napQhKQoP8pY9nebMkFJTZyeddDs"
 
 ## Specify map title
-MapTitle <- "titirangi restaurants 3km from Centre"
+MapTitle <- "Auckland restaurants 3km from Centre"
 
 ## Specify zoom level of the map, ranges from 0 (whole world) to 21 (building)
 ## 14 for 1000m-3000m radius, 13 or smaller for radius > 3000
@@ -71,7 +71,7 @@ get.places.API.Loop(lat = LatCity, lon = LonCity, radius = rad, searchtypes = se
                     filetype = "json", key = KEY, subdirectory = subdirectory)
 
 ## Write results into .csv in folder specified as argument
-filename <- JsonToCsvWriter(filelocation =  csvlocation, categoryidentifier =  searchtype, locationidentifier =  city) 
+filename <- JsonToCsvWriter(filelocation =  subdirectory, categoryidentifier =  searchtype, locationidentifier =  city) 
 
 ## Read created .csv
 API = (read.csv(filename, header = TRUE))
