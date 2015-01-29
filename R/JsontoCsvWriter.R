@@ -1,36 +1,36 @@
-# Team: ZeaPol
-# Team Members: Roeland de Koning / Barbara Sienkiewicz
-# Date: 29/01/2015
-# Final_Project
+## Team: ZeaPol
+## Team Members: Roeland de Koning / Barbara Sienkiewicz
+## Date: 29/01/2015
+## Final_Project
 ##########################################################
-# Function to write JSON files into one .csv file
+## Function to write JSON files into one .csv file
 
 
 JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier) {
   
-  # Create a list of all .json files within given filelocation
+  ## Create a list of all .json files within given filelocation
   file.list <- list.files(filelocation,pattern = "*.json")
   print(file.list)
   
-  # Create empty list
+  ## Create empty list
   ListOfDataFrames <- NULL
   
   
   for (k in 1:length(file.list)) {
     print(paste("interation ",k))
     
-    # Directory of the k file in the list
+    ## Directory of the k file in the list
     file <- paste(filelocation,"/",file.list[k])
     
-    # Remove empty spaces
+    ## Remove empty spaces
     file <- gsub(" ", "", file, fixed = TRUE)
     
     print(paste("filename = ",file))
     
-    # Read content in JSON format and de-serialize it into R objects
+    ## Read content in JSON format and de-serialize it into R objects
     raw_data <- fromJSON(file)
     
-    # Create an empty lists for lon, lat, names, types and addresses
+    ## Create an empty lists for lon, lat, names, types and addresses
     latlist <- list()
     lonlist <- list()
     namelist <- list()
@@ -54,11 +54,11 @@ JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier)
       
     datalist <- list(lat = latlist, lon = lonlist, name = namelist, type = typelist, address = addresslist)
       
-    # Bind all data frames  
+    ## Bind all data frames  
     API_DataFrame <- do.call(rbind, datalist)  
     print("data frame made")
     
-    #return(API_DataFrame)
+    ## Return(API_DataFrame)
   
     ListOfDataFrames[[k]] <- API_DataFrame
     
@@ -75,7 +75,6 @@ JsonToCsvWriter <- function(filelocation, categoryidentifier,locationidentifier)
   filename <- gsub(" ", "", filename, fixed = TRUE)
   print(filename)
   
-  #write.table(x = Final_DataFrame,file = filename,sep = ",",eol = "\n",row.names = FALSE)
   write.csv(Final_DataFrame, filename, row.names = FALSE, eol ="\n")
     
   APIcsv = t(read.csv(filename, header = TRUE))

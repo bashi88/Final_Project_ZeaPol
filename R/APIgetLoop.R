@@ -1,21 +1,22 @@
-# Team: ZeaPol
-# Team Members: Roeland de Koning / Barbara Sienkiewicz
-# Date: 29/01/2015
-# Final_Project
+## Team: ZeaPol
+## Team Members: Roeland de Koning / Barbara Sienkiewicz
+## Date: 29/01/2015
+## Final_Project
 ##########################################################
-# Function to create URLs for a search
+## Function to create URLs for a search
 
 
-# Functions used
+## Functions used
 source("R/APIget.R")
 source("R/Sleep.R")
 
-get.places.API.Loop <- function(lat, lon, radius, searchtypes = NULL, searchnames = NULL, filetype, key, token = NULL) {
+get.places.API.Loop <- function(lat, lon, radius, searchtypes = NULL, searchnames = NULL, filetype, key, token = NULL, subdirectory) {
   t <- "1"
   token <- ""
   
   while (!is.null(token)) {
     
+    ## Prepare a token url part (if exists)
     if(token != "") { 
       tokenscript <- "&pagetoken="
       tokenkeyscript <- paste(tokenscript, token)
@@ -25,18 +26,21 @@ get.places.API.Loop <- function(lat, lon, radius, searchtypes = NULL, searchname
     
     t <- as.character(t)
     
-    
-    APIFile <- get.places.API(lat = lat,lon =  lon,radius =  radius,searchtypes =  searchtypes,searchnames =  searchnames,filetype =  filetype,key =  key,token = token,t = t)
+    ## Downlowad JSON file (last file doesn't contain token so after downloading it loop stops)
+    APIFile <- get.places.API(lat = lat, lon =  lon, radius =  radius, searchtypes =  searchtypes,
+                              searchnames =  searchnames, filetype =  filetype, key =  key, token = token, t = t, subdirectory = subdirectory)
     
     print(paste("count = ",t))
     t <- as.numeric(t)
     t <- t + 1
     
     print("A file Complete")
+    
+    # Get next_page_token
     token <- APIFile$next_page_token
     print(paste("token check = ",token))
     
-    # Set a sleep mode for 5 sec (otherwise next_page_token is not working)
+    ## Set a sleep mode for 3 sec (otherwise next_page_token is not working)
     print("3 second wait please")
     OneMomentPlease(3)
   
